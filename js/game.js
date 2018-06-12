@@ -99,7 +99,6 @@ window.Game = (function () {
    */
   var SpriteMap = {};
   var REVERSED = '-reversed';
-
   SpriteMap[ObjectType.ME] = {
     width: 61,
     height: 84,
