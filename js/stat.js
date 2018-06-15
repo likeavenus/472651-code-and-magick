@@ -24,26 +24,28 @@ var renderCloud = function (ctx, x, y, color) {
   ctx.fillRect(x, y, CLOUD_WIDTH, CLOUD_HEIGHT);
 };
 
-var getMaxElement = function (arr) {
-var maxElement = arr[0];
+  var getMaxElement = function (arr) {
+    var maxElement = arr[0];
 
-for (var i = 0; i < arr.length; i++) {
-    if (arr[i] > maxElement) {
-    maxElement = arr[i];
+      for (var i = 0; i < arr.length; i++) {
+        if (arr[i] > maxElement) {
+        maxElement = arr[i];
+    }
   }
-}
   return maxElement;
 };
 
-  var renderColumn = function (ctx, x, y, width, height, player, time) {
-    ctx.fillRect(x, y, width, height);
-    ctx.fillStyle = '#000';
-    ctx.textBaseline = 'Hanging';
-    ctx.fillText(player, x, CLOUD_Y + CLOUD_HEIGHT - INNER_GAP_Y);
-    ctx.fillText(Math.round(time), x, y - GAP);
+var renderColumn = function (ctx, x, y, width, height, player, time) {
+
+  ctx.fillRect(x, y, width, height);
+
+  ctx.fillStyle = '#000';
+  ctx.textBaseline = 'Hanging';
+  ctx.fillText(player, x, CLOUD_Y + CLOUD_HEIGHT - INNER_GAP_Y);
+  ctx.fillText(Math.round(time), x, y - GAP);
 };
 
-  window.renderStatistics = function (ctx, players, times) {
+window.renderStatistics = function (ctx, players, times) {
 
   renderCloud(ctx, CLOUD_X + GAP, CLOUD_Y + GAP, 'rgba(0, 0, 0, 0.7)');
   renderCloud(ctx, CLOUD_X, CLOUD_Y, '#fff');
@@ -57,15 +59,15 @@ for (var i = 0; i < arr.length; i++) {
 
   for (var i = 0; i < players.length; i++) {
     ctx.fillStyle = getRandomBlue();
-    if (players[i] === 'Вы') {
-    ctx.fillStyle = USER_COLOR;
-  }
+      if (players[i] === 'Вы') {
+       ctx.fillStyle = USER_COLOR;
+    }
 
-  var columnHeight = (GRAPH_HEIGHT * times[i]) / maxTime;
-  var columnGap = COLUMN_WIDTH + GRAPH_GAP;
-  var columnY = CLOUD_Y + INNER_GAP_Y + LINE_HEIGHT * 3 + (GRAPH_HEIGHT - columnHeight);
-  var columnX = CLOUD_X + INNER_GAP_X + columnGap * i;
+    var columnHeight = (GRAPH_HEIGHT * times[i]) / maxTime;
+    var columnGap = COLUMN_WIDTH + GRAPH_GAP;
+    var columnY = CLOUD_Y + INNER_GAP_Y + LINE_HEIGHT * 3 + (GRAPH_HEIGHT - columnHeight);
+    var columnX = CLOUD_X + INNER_GAP_X + columnGap * i;
 
-  renderColumn(ctx, columnX, columnY, COLUMN_WIDTH, columnHeight, players[i], times[i]);
-  }
+    renderColumn(ctx, columnX, columnY, COLUMN_WIDTH, columnHeight, players[i], times[i]);
+    }
 };
