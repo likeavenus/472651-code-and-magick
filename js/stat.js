@@ -4,9 +4,6 @@
     ctx.fillRect(x, y, CLOUD_WIDTH, CLOUD_HEIGHT)
   }
 
-var renderColumn = function() {
-
-}
   var CLOUD_WIDTH = 420;
   var CLOUD_HEIGHT = 270;
   var BAR_X = 150;
@@ -25,14 +22,12 @@ var renderColumn = function() {
 var getMaxElement = function(arr) {
   var maxElement = arr[0];
     for (var i = 1; i < arr.length; i++) {
-    if (arr[i] > maxElement) {
+     if (arr[i] > maxElement) {
       maxElement = arr[i];
     }
   }
   return maxElement;
 };
-
-
 
 window.renderStatistics = function (ctx, names, times) {
   renderCloud(ctx, CLOUD_X + STEP, CLOUD_Y + STEP, 'rgba(0, 0, 0, 0.7)');
@@ -45,24 +40,24 @@ window.renderStatistics = function (ctx, names, times) {
   ctx.fillText('Ура вы победили!', CLOUD_X + STEP * 2, CLOUD_Y + STEP * 3);
   ctx.fillText('Список результатов:', CLOUD_X + STEP * 2, CLOUD_Y + STEP * 5);
 
-
   for (var i = 0; i < names.length; i++) {
     ctx.fillText(names[i], CLOUD_X + TEXT_WIDTH + MARGIN * i, TEXT_HEIGHT + TEXT_WIDTH + MARGIN_FROM_TEXT);
     if (names[i] ===  'Вы') {
     //ctx.fillStyle = 'rgba(255, 0, 0, 1)';
-    ctx.fillRect(BAR_X, BAR_Y, BAR_WIDTH, (MAX_BAR * times[i]) / maxTime);
+    var proportion = (MAX_BAR * times[i]) / maxTime;
+    ctx.fillRect(BAR_X, BAR_Y + (100% - (MAX_BAR * times[i]) / maxTime), BAR_WIDTH, (MAX_BAR * times[i]) / maxTime);
     }
     if (names[i] === 'Кекс') {
       //ctx.fillStyle = 'blue';
-      ctx.fillRect(BAR_X + MARGIN, BAR_Y, BAR_WIDTH, (MAX_BAR * times[i]) / maxTime);
+      ctx.fillRect(BAR_X + MARGIN, BAR_Y + (100% - (MAX_BAR * times[i]) / maxTime), BAR_WIDTH, (MAX_BAR * times[i]) / maxTime);
     }
       if (names[i] === 'Катя') {
       //ctx.fillStyle = '#DFDFDF';
-      ctx.fillRect(BAR_X + MARGIN * 2, BAR_Y, BAR_WIDTH, (MAX_BAR * times[i]) / maxTime);
+      ctx.fillRect(BAR_X + MARGIN * 2, BAR_Y + (100% - (MAX_BAR * times[i]) / maxTime), BAR_WIDTH, (MAX_BAR * times[i]) / maxTime);
     }
       if (names[i] === 'Игорь') {
       //ctx.fillStyle = '#000';
-      ctx.fillRect(BAR_X + MARGIN * 3, BAR_Y, BAR_WIDTH, (MAX_BAR * times[i]) / maxTime);
+      ctx.fillRect(BAR_X + MARGIN * 3, BAR_Y + (100% - (MAX_BAR * times[i]) / maxTime), BAR_WIDTH, (MAX_BAR * times[i]) / maxTime);
     }
   }
 
