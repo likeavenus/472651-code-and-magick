@@ -105,7 +105,7 @@ window.Game = (function () {
     url: 'img/wizard.gif'
   };
 
-  // TODO: Find a clever way
+  // T: Find a clever way
   SpriteMap[ObjectType.ME + REVERSED] = {
     width: 61,
     height: 84,
