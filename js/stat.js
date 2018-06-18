@@ -58,10 +58,10 @@ window.renderStatistics = function (ctx, players, times) {
   var maxTime = getMaxElement(times);
 
   for (var i = 0; i < players.length; i++) {
-    ctx.fillStyle = getRandomBlue();
-    if (players[i] === 'Вы') {
-    ctx.fillStyle = USER_COLOR;
-  }
+  ctx.fillStyle = getRandomBlue();
+  if (players[i] === 'Вы') {
+  ctx.fillStyle = USER_COLOR;
+}
 
   var columnHeight = (GRAPH_HEIGHT * times[i]) / maxTime;
   var columnGap = COLUMN_WIDTH + GRAPH_GAP;
