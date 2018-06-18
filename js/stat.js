@@ -59,15 +59,15 @@ window.renderStatistics = function (ctx, players, times) {
 
   for (var i = 0; i < players.length; i++) {
     ctx.fillStyle = getRandomBlue();
-      if (players[i] === 'Вы') {
-      ctx.fillStyle = USER_COLOR;
+    if (players[i] === 'Вы') {
+    ctx.fillStyle = USER_COLOR;
   }
 
-    var columnHeight = (GRAPH_HEIGHT * times[i]) / maxTime;
-    var columnGap = COLUMN_WIDTH + GRAPH_GAP;
-    var columnY = CLOUD_Y + INNER_GAP_Y + LINE_HEIGHT * 3 + (GRAPH_HEIGHT - columnHeight);
-    var columnX = CLOUD_X + INNER_GAP_X + columnGap * i;
+  var columnHeight = (GRAPH_HEIGHT * times[i]) / maxTime;
+  var columnGap = COLUMN_WIDTH + GRAPH_GAP;
+  var columnY = CLOUD_Y + INNER_GAP_Y + LINE_HEIGHT * 3 + (GRAPH_HEIGHT - columnHeight);
+  var columnX = CLOUD_X + INNER_GAP_X + columnGap * i;
 
-    renderColumn(ctx, columnX, columnY, COLUMN_WIDTH, columnHeight, players[i], times[i]);
+  renderColumn(ctx, columnX, columnY, COLUMN_WIDTH, columnHeight, players[i], times[i]);
   }
 };
